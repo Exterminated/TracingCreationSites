@@ -1,0 +1,107 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C1284E23-7784-40C2-BD9E-80EF0EE4C5F9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Devyatkin.TracingCreationSites</RootNamespace>
+    <AssemblyName>Devyatkin.TracingCreationSites</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SandboxedSolution>False</SandboxedSolution>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Constants.cs" />
+    <Compile Include="Classes\DisableEventFiring.cs" />
+    <Compile Include="EventRecivers\DetectionSubSiteEventReceiver\DetectionSubSiteEventReceiver.cs" />
+    <Compile Include="EventRecivers\WebRegistryEventReceiver\WebRegistryEventReceiver.cs" />
+    <Compile Include="Features\Devyatkin.TracingCreationSites Feature\Devyatkin.EventReceiver.cs">
+      <DependentUpon>Devyatkin.TracingCreationSites Feature.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Logger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Classes\Queries.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EventRecivers\DetectionSubSiteEventReceiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b9b53aea-07c7-470b-99d4-d32628818822}</SharePointProjectItemId>
+    </None>
+    <None Include="EventRecivers\WebRegistryEventReceiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{35848d91-d8c5-4b41-88f0-a1eab29f7a6a}</SharePointProjectItemId>
+    </None>
+    <None Include="Features\Devyatkin.TracingCreationSites Feature\Devyatkin.TracingCreationSites Feature.feature">
+      <FeatureId>{a5936045-9e56-4a80-bb25-01f96d3481ba}</FeatureId>
+    </None>
+    <None Include="key.snk" />
+    <None Include="Package\Package.package">
+      <PackageId>{39eee40a-2065-4d92-9e18-70828f248019}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Lists\WebRegistry\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{3dd79e47-b7e3-4cb2-a727-edaaa36a4221}</SharePointProjectItemId>
+    </None>
+    <None Include="Lists\WebRegistry\WebRegistryInstance\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a5d0d2fb-b2f1-42d6-9837-4e19d4e3d153}</SharePointProjectItemId>
+    </None>
+    <None Include="PowerShell\InstallSolution.ps1" />
+    <None Include="PowerShell\SPBestWarmUp.ps1" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="EventRecivers\DetectionSubSiteEventReceiver\Elements.xml" />
+    <Content Include="EventRecivers\WebRegistryEventReceiver\Elements.xml" />
+    <Content Include="Features\Devyatkin.TracingCreationSites Feature\Devyatkin.TracingCreationSites Feature.Template.xml">
+      <DependentUpon>Devyatkin.TracingCreationSites Feature.feature</DependentUpon>
+    </Content>
+    <Content Include="Lists\WebRegistry\Elements.xml" />
+    <Content Include="Lists\WebRegistry\Schema.xml" />
+    <Content Include="Lists\WebRegistry\WebRegistryInstance\Elements.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+</Project>

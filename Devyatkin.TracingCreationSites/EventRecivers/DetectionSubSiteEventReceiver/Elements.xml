@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Receivers >
+      <Receiver>
+        <Name>DetectionSubSiteEventReceiverWebDeleted</Name>
+        <Type>WebDeleted</Type>
+        <Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
+        <Class>Devyatkin.TracingCreationSites.DetectionSubSiteEventReceiver.DetectionSubSiteEventReceiver</Class>
+        <SequenceNumber>10000</SequenceNumber>
+      </Receiver>
+<Receiver>
+<Name>DetectionSubSiteEventReceiverWebAdding</Name>
+<Type>WebAdding</Type>
+<Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
+<Class>Devyatkin.TracingCreationSites.DetectionSubSiteEventReceiver.DetectionSubSiteEventReceiver</Class>
+<SequenceNumber>10000</SequenceNumber>
+</Receiver>
+</Receivers>
+</Elements>

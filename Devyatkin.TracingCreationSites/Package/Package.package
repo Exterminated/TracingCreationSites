@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="39eee40a-2065-4d92-9e18-70828f248019" solutionId="39eee40a-2065-4d92-9e18-70828f248019" resetWebServer="false" sharePointProductVersion="15.0" name="Devyatkin.TracingCreationSites" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="a5936045-9e56-4a80-bb25-01f96d3481ba" />
+  </features>
+</package>
